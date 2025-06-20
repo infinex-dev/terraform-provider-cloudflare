@@ -13,7 +13,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
@@ -54,11 +53,11 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						Description: "Configuration for assets within a Worker.",
 						Optional:    true,
 						Attributes: map[string]schema.Attribute{
-							"_headers": schema.StringAttribute{
+							"headers": schema.StringAttribute{
 								Description: "The contents of a _headers file (used to attach custom headers on asset responses)",
 								Optional:    true,
 							},
-							"_redirects": schema.StringAttribute{
+							"redirects": schema.StringAttribute{
 								Description: "The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)",
 								Optional:    true,
 							},
@@ -85,18 +84,11 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 									),
 								},
 							},
-							"run_worker_first": schema.BoolAttribute{
+							"run_worker_first": schema.ListAttribute{
 								Description: "When true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script.",
 								Computed:    true,
 								Optional:    true,
-								Default:     booldefault.StaticBool(false),
-							},
-							"serve_directly": schema.BoolAttribute{
-								Description:        "When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.",
-								Computed:           true,
-								Optional:           true,
-								DeprecationMessage: "This attribute is deprecated.",
-								Default:            booldefault.StaticBool(true),
+								ElementType:   types.StringType,
 							},
 						},
 					},
@@ -501,10 +493,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Description: "When the script was last modified.",
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
-			},
-			"startup_time_ms": schema.Int64Attribute{
-				Computed:      true,
-				PlanModifiers: []planmodifier.Int64{int64planmodifier.UseStateForUnknown()},
 			},
 			"placement": schema.SingleNestedAttribute{
 				Description: "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
