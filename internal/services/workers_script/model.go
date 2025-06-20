@@ -44,7 +44,6 @@ type WorkersScriptModel struct {
 	HasAssets     types.Bool        `tfsdk:"has_assets" json:"has_assets,computed"`
 	HasModules    types.Bool        `tfsdk:"has_modules" json:"has_modules,computed"`
 	ModifiedOn    timetypes.RFC3339 `tfsdk:"modified_on" json:"modified_on,computed" format:"date-time"`
-	StartupTimeMs types.Int64       `tfsdk:"startup_time_ms" json:"startup_time_ms,computed"`
 
 	WorkersScriptMetadataModel
 }
@@ -102,8 +101,8 @@ type WorkersScriptMetadataAssetsModel struct {
 }
 
 type WorkersScriptMetadataAssetsConfigModel struct {
-	Headers          types.String    `tfsdk:"_headers" json:"_headers,optional"`
-	Redirects        types.String    `tfsdk:"_redirects" json:"_redirects,optional"`
+	Headers          types.String    `tfsdk:"headers" json:"_headers,optional"`
+	Redirects        types.String    `tfsdk:"redirects" json:"_redirects,optional"`
 	HTMLHandling     types.String    `tfsdk:"html_handling" json:"html_handling,optional"`
 	NotFoundHandling types.String    `tfsdk:"not_found_handling" json:"not_found_handling,optional"`
 	RunWorkerFirst   *[]types.String `tfsdk:"run_worker_first" json:"run_worker_first,optional"`
