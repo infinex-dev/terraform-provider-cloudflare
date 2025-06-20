@@ -84,12 +84,14 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 									),
 								},
 							},
+							/*
 							"run_worker_first": schema.ListAttribute{
 								Description: "When true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script.",
 								Computed:    true,
 								Optional:    true,
 								ElementType:   types.StringType,
 							},
+							*/
 						},
 					},
 					"jwt": schema.StringAttribute{

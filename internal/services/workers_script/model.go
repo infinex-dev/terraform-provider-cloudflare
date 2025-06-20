@@ -105,7 +105,7 @@ type WorkersScriptMetadataAssetsConfigModel struct {
 	Redirects        types.String    `tfsdk:"redirects" json:"_redirects,optional"`
 	HTMLHandling     types.String    `tfsdk:"html_handling" json:"html_handling,optional"`
 	NotFoundHandling types.String    `tfsdk:"not_found_handling" json:"not_found_handling,optional"`
-	RunWorkerFirst   *[]types.String `tfsdk:"run_worker_first" json:"run_worker_first,optional"`
+	// RunWorkerFirst   *[]types.String `tfsdk:"run_worker_first" json:"run_worker_first,optional"`
 }
 
 type WorkersScriptMetadataBindingsModel struct {
