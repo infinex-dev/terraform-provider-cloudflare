@@ -126,6 +126,7 @@ type WorkersScriptMetadataBindingsModel struct {
 	QueueName     types.String                                `tfsdk:"queue_name" json:"queue_name,optional"`
 	BucketName    types.String                                `tfsdk:"bucket_name" json:"bucket_name,optional"`
 	Service       types.String                                `tfsdk:"service" json:"service,optional"`
+	Entrypoint    types.String                                `tfsdk:"entrypoint" json:"entrypoint,optional"`
 	IndexName     types.String                                `tfsdk:"index_name" json:"index_name,optional"`
 	SecretName    types.String                                `tfsdk:"secret_name" json:"secret_name,optional"`
 	StoreID       types.String                                `tfsdk:"store_id" json:"store_id,optional"`
