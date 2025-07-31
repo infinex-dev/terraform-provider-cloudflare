@@ -226,6 +226,10 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 							Description: "Name of Worker to bind to.",
 							Optional:    true,
 						},
+						"entrypoint": schema.StringAttribute{
+							Description: "Name of the Worker entrypoint to bind to.",
+							Optional:    true,
+						},
 						"index_name": schema.StringAttribute{
 							Description: "Name of the Vectorize index to bind to.",
 							Optional:    true,
